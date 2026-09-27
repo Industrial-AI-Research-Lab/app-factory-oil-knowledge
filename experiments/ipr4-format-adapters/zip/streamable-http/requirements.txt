@@ -1,0 +1,4 @@
+mcp[cli]==1.16.0
+uvicorn[standard]>=0.30.0
+segyio==1.9.14
+httpx==0.28.1

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Well xmlns="http://www.energistics.org/energyml/data/witsmlv2" schemaVersion="2.0" uuid="00000000-0000-0000-0000-000000000000">
+  <Citation><Title>Synthetic Demo Well</Title></Citation>
+</Well>

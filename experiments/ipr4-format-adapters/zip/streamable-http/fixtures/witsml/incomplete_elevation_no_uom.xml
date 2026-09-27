@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wells xmlns="http://www.witsml.org/schemas/1series" version="1.4.1.1">
+  <well uid="SYN-WELL-001">
+    <name>Synthetic Demo Well</name>
+    <field>Synthetic Field</field>
+    <timeZone>+03:00</timeZone>
+    <wellheadElevation>12.5</wellheadElevation>
+  </well>
+</wells>

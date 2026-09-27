@@ -1,0 +1,20 @@
+{
+  "dataset": "OSDU Open Test Data / Volve",
+  "project": "osdu/data/open-test-data",
+  "commit": "752429501511f05176faab2e916a90c1f8e88a50",
+  "slice_root": "rc--3.0.0/4-instances/Volve",
+  "roots": {
+    "Well": "rc--3.0.0/4-instances/Volve/master-data/Well",
+    "Wellbore": "rc--3.0.0/4-instances/Volve/master-data/Wellbore",
+    "WellLog": "rc--3.0.0/4-instances/Volve/work-products/welllogs_1_1_0"
+  },
+  "expected_files": {
+    "Well": 11,
+    "Wellbore": 27,
+    "WellLog": 28
+  },
+  "licenses": [
+    "Apache-2.0",
+    "Equinor Open Data Licence"
+  ]
+}

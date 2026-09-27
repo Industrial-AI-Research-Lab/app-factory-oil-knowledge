@@ -1,0 +1,23 @@
+{
+  "checked_on": "2026-09-25",
+  "status": "pass",
+  "package_id": "research-mcp-mvp-fixtures",
+  "package_version": "1.0.0",
+  "scope": [
+    "data",
+    "evaluation",
+    "negative"
+  ],
+  "locked_files": 54,
+  "files_by_root": {
+    "data": 39,
+    "evaluation": 11,
+    "negative": 4
+  },
+  "missing_files": 0,
+  "unexpected_fixture_files": 0,
+  "size_mismatches": 0,
+  "checksum_mismatches": 0,
+  "package_lock_sha256": "d6ce95c1a4c3883c34c3b450a18fb763b20dbc047225e95a78d25a4286291333",
+  "legacy_runtime_covered": false
+}

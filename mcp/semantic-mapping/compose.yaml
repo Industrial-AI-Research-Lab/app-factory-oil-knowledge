@@ -1,0 +1,41 @@
+services:
+  semantic-mapping:
+    build: .
+    ports:
+      - "127.0.0.1:18080:8080"
+    cpus: 2.0
+    mem_limit: 1g
+    pids_limit: 256
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      DB_CONFIG: "${DB_CONFIG:-}"
+      EMBEDDING_HOST_CATEGORIES: "${EMBEDDING_HOST_CATEGORIES:-http://embedder/embed}"
+      EMBEDDING_HOST_TASKS: "${EMBEDDING_HOST_TASKS:-http://embedder/embed}"
+      EMBEDDING_HOST_HIERARCHIES: "${EMBEDDING_HOST_HIERARCHIES:-http://embedder/embed}"
+      EMBEDDING_ACCESS_TOKEN: "${EMBEDDING_ACCESS_TOKEN:-}"
+      TOP_K_NAMES: "${TOP_K_NAMES:-1}"
+      TOP_K_CATEGORIES: "${TOP_K_CATEGORIES:-5}"
+      CATEGORY_ID_FIELD: "${CATEGORY_ID_FIELD:-category_id}"
+      CATEGORY_NAME_FIELD: "${CATEGORY_NAME_FIELD:-category_name}"
+      BATCH_SIZE_CATEGORIES: "${BATCH_SIZE_CATEGORIES:-32}"
+      BATCH_SIZE_TASKS: "${BATCH_SIZE_TASKS:-32}"
+    # TCP liveness only: must not depend on settings/env — with empty DB_CONFIG
+    # load_runtime_settings() always fails and the container would never
+    # become healthy. Readiness (TEI/PG reachability) is smoke's job, not this.
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import socket; s=socket.create_connection(('127.0.0.1',8080),3); s.close()",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s

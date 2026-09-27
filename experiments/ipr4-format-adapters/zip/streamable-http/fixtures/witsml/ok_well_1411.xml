@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wells xmlns="http://www.witsml.org/schemas/1series" version="1.4.1.1">
+  <well uid="SYN-WELL-001">
+    <name>Synthetic Demo Well</name>
+    <field>Synthetic Field</field>
+    <timeZone>+03:00</timeZone>
+    <wellheadElevation uom="m">12.5</wellheadElevation>
+    <nameLegal>Synthetic Demo Well 1</nameLegal>
+    <numLicense>SYN-LIC-2026-01</numLicense>
+    <numGovt>SYN-GOV-001</numGovt>
+    <country>RU</country>
+    <region>Synthetic Region</region>
+    <block>SYN-BLOCK-A</block>
+    <district>Synthetic District</district>
+    <operator>Synthetic Operator</operator>
+    <operatorDiv>Exploration</operatorDiv>
+    <pcInterest uom="%">100</pcInterest>
+    <statusWell>active</statusWell>
+    <purposeWell>exploration</purposeWell>
+    <fluidWell>dry</fluidWell>
+    <directionWell>vertical</directionWell>
+    <groundElevation uom="m">18.0</groundElevation>
+    <waterDepth uom="m">0</waterDepth>
+    <wellDatum>KB</wellDatum>
+    <dTimSpud>2026-09-01T06:00:00.000Z</dTimSpud>
+    <wellLocation>
+      <latitude uom="dega">60.0</latitude>
+      <longitude uom="dega">50.0</longitude>
+      <easting uom="m">500000</easting>
+      <northing uom="m">6600000</northing>
+    </wellLocation>
+  </well>
+  <well uid="SYN-WELL-002">
+    <name>Synthetic North</name>
+    <field>Synthetic Field</field>
+    <timeZone>+03:00</timeZone>
+    <wellheadElevation uom="m">15.2</wellheadElevation>
+    <country>RU</country>
+    <operator>Synthetic Operator</operator>
+    <statusWell>active</statusWell>
+    <purposeWell>production</purposeWell>
+    <fluidWell>oil</fluidWell>
+    <directionWell>vertical</directionWell>
+    <wellDatum>KB</wellDatum>
+    <wellLocation>
+      <easting uom="m">500350</easting>
+      <northing uom="m">6600420</northing>
+    </wellLocation>
+  </well>
+  <well uid="SYN-WELL-003">
+    <name>Synthetic South</name>
+    <field>Synthetic Field</field>
+    <timeZone>+03:00</timeZone>
+    <wellheadElevation uom="m">9.0</wellheadElevation>
+    <country>RU</country>
+    <operator>Synthetic Operator</operator>
+    <statusWell>active</statusWell>
+    <purposeWell>production</purposeWell>
+    <fluidWell>gas</fluidWell>
+    <directionWell>vertical</directionWell>
+    <wellDatum>KB</wellDatum>
+    <wellLocation>
+      <easting uom="m">499640</easting>
+      <northing uom="m">6599600</northing>
+    </wellLocation>
+  </well>
+  <well uid="SYN-WELL-004">
+    <name>Synthetic East</name>
+    <field>Synthetic Field</field>
+    <timeZone>+03:00</timeZone>
+    <wellheadElevation uom="m">21.4</wellheadElevation>
+    <country>RU</country>
+    <operator>Synthetic Operator</operator>
+    <statusWell>suspended</statusWell>
+    <purposeWell>exploration</purposeWell>
+    <fluidWell>dry</fluidWell>
+    <directionWell>vertical</directionWell>
+    <wellDatum>KB</wellDatum>
+    <wellLocation>
+      <easting uom="m">500800</easting>
+      <northing uom="m">6600100</northing>
+    </wellLocation>
+  </well>
+  <well uid="SYN-WELL-005">
+    <name>Synthetic West</name>
+    <field>Synthetic Field</field>
+    <timeZone>+03:00</timeZone>
+    <wellheadElevation uom="m">6.8</wellheadElevation>
+    <country>RU</country>
+    <operator>Synthetic Operator</operator>
+    <statusWell>active</statusWell>
+    <purposeWell>injection</purposeWell>
+    <fluidWell>water</fluidWell>
+    <directionWell>vertical</directionWell>
+    <wellDatum>KB</wellDatum>
+    <wellLocation>
+      <easting uom="m">499200</easting>
+      <northing uom="m">6600080</northing>
+    </wellLocation>
+  </well>
+</wells>

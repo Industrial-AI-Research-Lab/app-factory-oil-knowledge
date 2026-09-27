@@ -1,0 +1,7 @@
+mcp[cli]==1.16.0
+numpy>=1.26
+psycopg2-binary>=2.9.9
+pydantic==2.11.9
+pydantic-settings>=2.11
+requests>=2.31
+uvicorn[standard]>=0.30.0

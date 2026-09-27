@@ -1,0 +1,2 @@
+# Marker so ZIP docker build of stdio/Dockerfile uses the package root as context.
+packages: []

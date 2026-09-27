@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-09-03T18:17:49.040280+00:00",
+  "sources": [
+    {
+      "file": "volve_production_archive.xlsx",
+      "url": "https://raw.githubusercontent.com/f0nzie/volve_eclipse_reservoir/0d34eaf1be7003a6c251dea938de3e3738501d71/inst/rawdata/Volve%20production%20data.xlsx",
+      "bytes": 2344094,
+      "sha256": "7e9f7056af9bb89e907ce1b05ec85090e611021e072b6ecd395b5641a0689da9"
+    },
+    {
+      "file": "volve_wellbores.geojson",
+      "url": "https://factmaps.sodir.no/api/rest/services/Factmaps/FactMapsWGS84/MapServer/201/query?where=wlbField%3D%27VOLVE%27&outFields=*&outSR=4326&f=geojson",
+      "bytes": 96720,
+      "sha256": "2d547f93b2055d05130ecb4a6bb6ff6a5b5c21de39757df171b3a8bd83ee5906"
+    },
+    {
+      "file": "volve_field.geojson",
+      "url": "https://factmaps.sodir.no/api/rest/services/Factmaps/FactMapsWGS84/MapServer/502/query?where=fldName%3D%27VOLVE%27&outFields=*&outSR=4326&f=geojson",
+      "bytes": 3053,
+      "sha256": "055049a0acdfac2e7ec47f6b02c86e19e137c076967042a21bc1fa509bd3f64a"
+    },
+    {
+      "file": "volve_field_monthly.json",
+      "url": "https://factmaps.sodir.no/api/rest/services/DataService/Data/FeatureServer/7300/query?where=prfInformationCarrier%3D%27VOLVE%27%20AND%20prfMonth%3E0&outFields=*&returnGeometry=false&orderByFields=prfYear,prfMonth&f=json",
+      "bytes": 63864,
+      "sha256": "350b63bf00cef15691fbc6b1b8c9c5360d69005e20a524b2421b09d81d1ec621"
+    }
+  ],
+  "notes": "All remote inputs were validated against pinned SHA-256 values before publication; map and field series originate from official SODIR APIs.",
+  "sourceGraph": {
+    "file": "source_graph.json",
+    "bytes": 26435,
+    "sha256": "23de7116b520f24c3b7965b2fdbf990bc14aa64f6030f25cb339e90c88d6ea9a",
+    "graph": "osdu-volve",
+    "nodes": 66,
+    "edges": 55
+  }
+}

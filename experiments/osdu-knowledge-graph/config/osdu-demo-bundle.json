@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "items": {
+    "agents": [
+      {
+        "_id": "osdu_graph_analyst",
+        "type": "generic",
+        "name": "osdu_graph_analyst",
+        "description": "Answers questions from the read-only OSDU Volve knowledge graph.",
+        "agent_class": "GenericAgent",
+        "model": "iairlab/gpt-oss-120b",
+        "system_prompt": "",
+        "allowed_phases": [
+          "osdu_graph_analyze"
+        ],
+        "allowed_tools": [],
+        "allowed_mcp_tools": [
+          "osdu-graph-ro.query_graph_readonly",
+          "osdu-graph-ro.get_node_schema"
+        ],
+        "enabled": true
+      },
+      {
+        "_id": "osdu_graph_critic",
+        "type": "generic",
+        "name": "osdu_graph_critic",
+        "description": "Reviews the analyst draft and either sends it back for revision or publishes the user-facing answer. Does not call graph tools.",
+        "agent_class": "GenericAgent",
+        "model": "iairlab/gpt-oss-120b",
+        "system_prompt": "",
+        "allowed_phases": [
+          "osdu_graph_critique"
+        ],
+        "allowed_tools": [],
+        "allowed_mcp_tools": [],
+        "enabled": true
+      }
+    ],
+    "workflows": [
+      {
+        "_id": "osdu_graph_demo",
+        "name": "osdu_graph_demo",
+        "description": "Answer one question from the read-only OSDU Volve graph. The critic reviews the analyst draft and can send it back up to five times; only an accepted plain-language answer reaches the user.",
+        "execution_mode": "static",
+        "nodes": [
+          {
+            "id": "start",
+            "type": "start"
+          },
+          {
+            "id": "osdu_analyst",
+            "type": "phase",
+            "task_type": "osdu_graph_analyze",
+            "description": "Read osdu-volve and draft an answer from graph evidence.",
+            "agent_selection": "direct",
+            "agent_type": "osdu_graph_analyst",
+            "phase_label": "osdu_graph_analyze",
+            "reads": [
+              "user_prompt",
+              "osdu_user_answer"
+            ],
+            "writes": [
+              "osdu_analysis_report"
+            ]
+          },
+          {
+            "id": "osdu_critic",
+            "type": "phase",
+            "task_type": "osdu_graph_critique",
+            "description": "Check the analyst draft. If it is wrong, send REVISE; if it is right, copy the user answer.",
+            "agent_selection": "direct",
+            "agent_type": "osdu_graph_critic",
+            "phase_label": "osdu_graph_critique",
+            "reads": [
+              "user_prompt",
+              "osdu_analysis_report"
+            ],
+            "writes": [
+              "osdu_user_answer"
+            ]
+          },
+          {
+            "id": "osdu_critic_gate",
+            "type": "validator",
+            "max_reject_retries": 5,
+            "checks": [
+              {
+                "key": "osdu_user_answer.raw_output",
+                "kind": "json_schema",
+                "json_schema": {
+                  "type": "string",
+                  "minLength": 1,
+                  "not": {
+                    "anyOf": [
+                      {
+                        "pattern": "^\\s*REVISE(\\b|[\\r\\n ])"
+                      },
+                      {
+                        "pattern": "graphName"
+                      },
+                      {
+                        "pattern": "sampleSize"
+                      },
+                      {
+                        "pattern": "^\\s*MATCH\\s*\\("
+                      },
+                      {
+                        "pattern": "free-form answer"
+                      },
+                      {
+                        "pattern": "Could you please clarify"
+                      },
+                      {
+                        "pattern": "you'd like to retrieve"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "end",
+            "type": "end"
+          }
+        ],
+        "edges": [
+          {
+            "from": "start",
+            "to": "osdu_analyst"
+          },
+          {
+            "from": "osdu_analyst",
+            "to": "osdu_critic"
+          },
+          {
+            "from": "osdu_critic",
+            "to": "osdu_critic_gate"
+          },
+          {
+            "from": "osdu_critic_gate",
+            "to": "osdu_analyst",
+            "condition": "rejected"
+          },
+          {
+            "from": "osdu_critic_gate",
+            "to": "end",
+            "condition": "approved"
+          }
+        ],
+        "is_default": false
+      }
+    ],
+    "tools": [],
+    "run_configurations": [],
+    "a2a_servers": []
+  }
+}
